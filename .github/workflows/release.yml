@@ -47,9 +47,17 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Prepare release notes
+        run: |
+          if [ -f "docs/releases/v${{ github.ref_name }}.md" ]; then
+            cp "docs/releases/v${{ github.ref_name }}.md" release-notes.md
+          else
+            echo "Release ${{ github.ref_name }}" > release-notes.md
+          fi
       - name: Create Release And Upload
         uses: softprops/action-gh-release@v2
         with:
+          body_path: release-notes.md
           files: |
             *.main.js
             manifest.json
