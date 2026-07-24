@@ -8,6 +8,8 @@
 
 [![最新版本的下载量](https://img.shields.io/github/downloads-pre/remotely-save/remotely-save/latest/main.js?sort=semver)](https://github.com/fyears/remotely-save/releases)
 
+> **注意：** 本仓库是 [remotely-save/remotely-save](https://github.com/remotely-save/remotely-save) 的精简分支，**仅保留 Amazon S3（或 S3 兼容服务）和 WebDAV** 两种同步方式。Dropbox、OneDrive、Webdis、Google Drive、Box、pCloud、Yandex Disk、Koofr 和 Azure Blob Storage 的支持已被移除。
+
 ## 免责声明
 
 - **这不是 Obsidian 提供的[官方同步服务](https://obsidian.md/sync)。**
@@ -20,17 +22,7 @@
 
 - 支持：
   - Amazon S3 或兼容 S3 的服务（Cloudflare R2 / BackBlaze B2 / MinIO / ...）
-  - Dropbox
-  - 个人版本 OneDrive（应用文件夹）
-  - 个人版本 OneDrive（根目录）（PRO 功能）
   - Webdav（NextCloud / InfiniCloud / Synology webdav 服务器 / ...）
-  - Webdis
-  - Google Drive（GDrive）（PRO 功能）
-  - Box（PRO 功能）
-  - pCloud（PRO 功能）
-  - Yandex Disk（PRO 功能）
-  - Koofr（PRO 功能）
-  - Azure Blob Storage（PRO 功能）
   - [这里](./docs/services_connectable_or_not.md)详细展示了更多可连接（或不可连接）的服务。
 - **支持 Obsidian 移动版。**  vault 可以通过云服务作为“中介”在移动和桌面设备之间同步。
 - **支持[端到端加密](./docs/encryption/README.md)。** 如果用户指定密码，文件在发送到云之前会使用 openssl / rclone crypt 格式加密。
@@ -90,24 +82,6 @@
 - **同步时要有耐心。** 尤其是在第一次同步时。
 - 如果你想在多个设备之间同步文件，**在使用默认设置时，你的 vault 名称应该相同**。
 
-### Dropbox
-
-- **此插件不是官方Dropbox产品。** 插件只是使用 Dropbox 的公共API。
-- 授权后，插件可以读取你的姓名和电子邮件（在 Dropbox api 上无法取消选择），并读取和写入你的 Dropbox 的 `/Apps/remotely-save` 文件夹中的文件。
-- 如果你决定授权此插件连接到 Dropbox，请访问插件的设置页，选择Dropbox 然后按照说明操作。[更多带截图的信息在这里](./docs/dropbox_review_material/README.md)。
-- 基于密码的端到端加密也是可以的。但请注意，**vault 名称本身未加密**。
-- 如果你想在多个设备之间同步文件，**在使用默认设置时，你的 vault 名称应该相同**。
-
-### 个人 OneDrive（应用文件夹）
-
-- **此插件不是官方 Microsoft / OneDrive 产品。** 插件只是使用 Microsoft 的 [OneDrive 公共 API](https://docs.microsoft.com/en-us/onedrive/developer/rest-api) 而已。
-- 此插件仅适用于“个人 OneDrive”，不适用于“OneDrive for Business。详见 [#11](https://github.com/fyears/remotely-save/issues/11)。
-- 授权后，插件可以读取你的姓名和电子邮件，并读取和写入你的OneDrive的 `/Apps/remotely-save` 文件夹中的文件。**Remotely Save 的免费版本仅连接到应用文件夹，而 PRO 版本可以连接到 Onedrive 的根文件夹。见下面的 PRO 部分。**
-- 如果你决定授权此插件连接到 OneDrive，请访问插件的设置页，选择OneDrive 然后按照说明操作。
-- 基于密码的端到端加密也是可以的。但请注意，**vault 名称本身未加密**。
-- 如果你想在多个设备之间同步文件，**在使用默认设置时，你的 vault 名称应该相同**。
-- 你可能还想查看 [OneDrive 的常见问题](./docs/remote_services/onedrive/README.md)。
-
 ### webdav
 
 - 教程/示例：
@@ -127,41 +101,6 @@
 - 你的数据会同步到你的webdav服务器上的 `${vaultName}` 子文件夹。
 - 基于密码的端到端加密也是可以的。但请注意，**vault 名称本身未加密**。
 - 如果你想在多个设备之间同步文件，**在使用默认设置时，你的 vault 名称应该相同**。
-
-### Webdis
-
-- 教程：
-  - [Webdis](./docs/remote_services/webdis/README.md)
-- 实验性质。
-- 你必须自己设置和保护你的 web 服务器。
-
-### Onedrive（完整访问）（PRO 功能）
-
-PRO（付费）功能“与 Onedrive（完整）同步”允许用户与 Onedrive 根文件夹进行同步。教程和限制在[这里](./docs/remote_services/onedrivefull/README.md)。
-
-### Google Drive（GDrive）（PRO 功能）
-
-PRO（付费）功能“与 Google Drive 同步”允许用户与 Google Drive 进行同步。教程和限制在[这里](./docs/remote_services/googledrive/README.md)。
-
-### Box（PRO 功能）
-
-PRO（付费）功能“与 Box 同步”允许用户与 Box 同步。教程和限制在[这里](./docs/remote_services/box/README.md)。
-
-### pCloud（PRO 功能）
-
-PRO（付费）功能“与 pCloud 同步”允许用户与 pCloud 同步（使用其原生 API 而不是 webdav）。教程和限制在[这里](./docs/remote_services/pcloud/README.md)。
-
-### Yandex Disk（PRO 功能）
-
-PRO（付费）功能“与 Yandex Disk 同步”允许用户与 Yandex Disk 同步（使用其原生 API 而不是 webdav）。教程和限制在[这里](./docs/remote_services/yandexdisk/README.md)。
-
-### Koofr（PRO 功能）
-
-PRO（付费）功能“与 Koofr 同步”允许用户与 Koofr 同步（使用其原生 API 而不是 webdav）。教程和限制在[这里](./docs/remote_services/koofr/README.md)。
-
-### Azure Blob Storage（PRO 功能）
-
-PRO（付费）功能“与 Azure Blob Storage 同步”允许用户与 Azure Blob Storage 同步。教程和限制在[这里](./docs/remote_services/azureblobstorage/README.md)。
 
 ## 智能冲突（PRO功能）
 

@@ -270,58 +270,6 @@ export const checkProRunnableAndFixInplace = async (
     // good to go
   }
 
-  const toChecked: {
-    feature: PRO_FEATURE_TYPE;
-    service: SUPPORTED_SERVICES_TYPE;
-    name: string;
-  }[] = [
-    {
-      feature: "feature-google_drive",
-      service: "googledrive",
-      name: "Google Drive",
-    },
-    {
-      feature: "feature-onedrive_full",
-      service: "onedrivefull",
-      name: "Onedrive (Full)",
-    },
-    { feature: "feature-box", service: "box", name: "Box" },
-    { feature: "feature-pcloud", service: "pcloud", name: "pCloud" },
-    {
-      feature: "feature-yandex_disk",
-      service: "yandexdisk",
-      name: "Yandex Disk",
-    },
-    {
-      feature: "feature-koofr",
-      service: "koofr",
-      name: "Koofr",
-    },
-    {
-      feature: "feature-azure_blob_storage",
-      service: "azureblobstorage",
-      name: "Azure Blob Storage",
-    },
-  ];
-
-  for (const { feature, service, name } of toChecked) {
-    console.debug(`checking "${feature}", serviceType=${config.serviceType}`);
-    if (config.serviceType === service) {
-      if (
-        config.pro.enabledProFeatures.filter((x) => x.featureName === feature)
-          .length === 1
-      ) {
-        // good to go
-      } else {
-        errorMsgs.push(
-          `You're trying to use "sync with ${name}" PRO feature but you haven't subscribe to it.`
-        );
-      }
-    } else {
-      // good to go
-    }
-  }
-
   if (errorMsgs.length !== 0) {
     throw Error(errorMsgs.join("\n\n"));
   }

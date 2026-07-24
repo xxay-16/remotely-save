@@ -8,6 +8,8 @@ This is yet another unofficial sync plugin for Obsidian. If you like it or find 
 
 [![downloads of latest version](https://img.shields.io/github/downloads-pre/remotely-save/remotely-save/latest/main.js?sort=semver)](https://github.com/fyears/remotely-save/releases)
 
+> **Note:** This fork is a trimmed-down version of [remotely-save/remotely-save](https://github.com/remotely-save/remotely-save). It keeps **only Amazon S3 (or S3-compatible) and WebDAV** as sync targets. Support for Dropbox, OneDrive, Webdis, Google Drive, Box, pCloud, Yandex Disk, Koofr and Azure Blob Storage has been removed.
+
 ## Disclaimer
 
 - **This is NOT the [official sync service](https://obsidian.md/sync) provided by Obsidian.**
@@ -20,17 +22,7 @@ This is yet another unofficial sync plugin for Obsidian. If you like it or find 
 
 - Supports:
   - Amazon S3 or S3-compatible (Cloudflare R2 / BackBlaze B2 / MinIO / ...)
-  - Dropbox
-  - OneDrive for personal (App Folder)
-  - OneDrive for personal (Full) (PRO feature)
   - Webdav (NextCloud / InfiniCloud / Synology webdav server / ...)
-  - Webdis
-  - Google Drive (GDrive) (PRO feature)
-  - Box (PRO feature)
-  - pCloud (PRO feature)
-  - Yandex Disk (PRO feature)
-  - Koofr (PRO feature)
-  - Azure Blob Storage (PRO feature)
   - [Here](./docs/services_connectable_or_not.md) shows more connectable (or not-connectable) services in details.
 - **Obsidian Mobile supported.** Vaults can be synced across mobile and desktop devices with the cloud service as the "broker".
 - **[End-to-end encryption](./docs/encryption/README.md) supported.** Files would be encrypted using openssl / rclone crypt format before being sent to the cloud **if** user specify a password.
@@ -90,24 +82,6 @@ Additionally, the plugin author may occasionally visit Obsidian official forum a
 - **Be patient while syncing.** Especially in the first-time sync.
 - If you want to sync the files across multiple devices, **your vault name should be the same** while using default settings.
 
-### Dropbox
-
-- **This plugin is NOT an official Dropbox product.** The plugin just uses Dropbox's public API.
-- After the authorization, the plugin can read your name and email (which cannot be unselected on Dropbox api), and read and write files in your Dropbox's `/Apps/remotely-save` folder.
-- If you decide to authorize this plugin to connect to Dropbox, please go to plugin's settings, and choose Dropbox then follow the instructions. [More with screenshot is here](./docs/dropbox_review_material/README.md).
-- Password-based end-to-end encryption is also supported. But please be aware that **the vault name itself is not encrypted**.
-- If you want to sync the files across multiple devices, **your vault name should be the same** while using default settings.
-
-### OneDrive for personal (App Folder)
-
-- **This plugin is NOT an official Microsoft / OneDrive product.** The plugin just uses Microsoft's [OneDrive's public API](https://docs.microsoft.com/en-us/onedrive/developer/rest-api).
-- This plugin only works for "OneDrive for personal", and not works for "OneDrive for Business" (yet). See [#11](https://github.com/fyears/remotely-save/issues/11) to further details.
-- After the authorization, the plugin can read your name and email, and read and write files in your OneDrive's `/Apps/remotely-save` folder. **The free version of Remotely Save only connects to App Folder, while the PRO version can connect to the root folder in Onedrive. See below PRO part.** 
-- If you decide to authorize this plugin to connect to OneDrive, please go to plugin's settings, and choose OneDrive then follow the instructions.
-- Password-based end-to-end encryption is also supported. But please be aware that **the vault name itself is not encrypted**.
-- If you want to sync the files across multiple devices, **your vault name should be the same** while using default settings.
-- You might also want to checkout [faq for OneDrive](./docs/remote_services/onedrive/README.md).
-
 ### webdav
 
 - Tutorials / Examples:
@@ -127,41 +101,6 @@ Additionally, the plugin author may occasionally visit Obsidian official forum a
 - Your data would be synced to a `${vaultName}` sub folder on your webdav server.
 - Password-based end-to-end encryption is also supported. But please be aware that **the vault name itself is not encrypted**.
 - If you want to sync the files across multiple devices, **your vault name should be the same** while using default settings.
-
-### Webdis
-
-- Tutorials:
-  - [Webdis](./docs/remote_services/webdis/README.md)
-- Mostly experimental.
-- You have to setup and protect your web server by yourself.
-
-### Onedrive (Full access) (PRO feature)
-
-PRO (paid) feature "sync with Onedrive (Full)" allows users to to sync with Onedrive root folder. Tutorials and limitations are documented [here](./docs/remote_services/onedrivefull/README.md).
-
-### Google Drive (GDrive) (PRO feature)
-
-PRO (paid) feature "sync with Google Drive" allows users to to sync with Google Drive. Tutorials and limitations are documented [here](./docs/remote_services/googledrive/README.md).
-
-### Box (PRO feature)
-
-PRO (paid) feature "sync with Box" allows users to to sync with Box. Tutorials and limitations are documented [here](./docs/remote_services/box/README.md).
-
-### pCloud (PRO feature)
-
-PRO (paid) feature "sync with pCloud" allows users to to sync with pCloud (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/pcloud/README.md).
-
-### Yandex Disk (PRO feature)
-
-PRO (paid) feature "sync with Yandex Disk" allows users to to sync with Yandex Disk (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/yandexdisk/README.md).
-
-### Koofr (PRO feature)
-
-PRO (paid) feature "sync with Koofr" allows users to to sync with Koofr (using its native API instead of webdav). Tutorials and limitations are documented [here](./docs/remote_services/koofr/README.md).
-
-### Azure Blob Storage (PRO feature)
-
-PRO (paid) feature "sync with Azure Blob Storage" allows users to to sync with Azure Blob Storage. Tutorials and limitations are documented [here](./docs/remote_services/azureblobstorage/README.md).
 
 ## Smart Conflict (PRO feature)
 
