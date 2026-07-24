@@ -51,8 +51,6 @@
 - 建议：也在[GitHub 仓库讨论](https://github.com/remotely-save/remotely-save/discussions)
 - 错误：[GitHub 仓库 Issue](https://github.com/remotely-save/remotely-save/issues)（注意这里是 bug 反馈，不是讨论）
 
-此外，插件作者可能会偶尔访问 Obsidian 官方论坛和官方 Discord 服务器，并关注与该插件相关的信息。
-
 ## 下载和安装
 
 - 选项 #1：在官方“社区插件列表”中搜索，或访问此链接：[https://obsidian.md/plugins?id=remotely-save](https://obsidian.md/plugins?id=remotely-save)（应该会重定向到 Obsidian app），然后安装插件。

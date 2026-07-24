@@ -51,8 +51,6 @@ You are greatly welcome to ask questions, post any suggestions, or report any bu
 - Suggestions: also in [GitHub repo Discussions](https://github.com/remotely-save/remotely-save/discussions)
 - Bugs: [GitHub repo Issues](https://github.com/remotely-save/remotely-save/issues) (NOT Discussion)
 
-Additionally, the plugin author may occasionally visit Obsidian official forum and official Discord server, and pay attention to this-plugin-related information there.
-
 ## Download and Install
 
 - Option #1: Search in the official "community plugin list", or visit this: [https://obsidian.md/plugins?id=remotely-save](https://obsidian.md/plugins?id=remotely-save) (which should redirect you into Obsidian app), then install the plugin.
